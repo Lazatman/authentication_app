@@ -33,8 +33,30 @@ def login():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+
     if request.method == 'GET':
         return render_template('register.html')
+    else:
+        inputs = [request.form.get(x, False) for x in ('firstname',
+                                            'lastname',
+                                            'date_naissance',
+                                            'sexe', 'email',
+                                            'email2', 'mdp')]
+        print('inputs:', inputs)
+        if all(inputs):
+            return jsonify(
+                {
+                    "status": 200,
+                    "result": 'Success!',
+                    "email": request.form['email'],
+                    "mdp": request.form['mdp']
+                })
+        else:
+            return jsonify(
+                {
+                    "status": 400,
+                    "result": 'Fail!'
+                })
 
 
 if __name__ == '__main__':
