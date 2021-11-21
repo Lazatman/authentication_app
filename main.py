@@ -42,7 +42,6 @@ def register():
                                             'date_naissance',
                                             'sexe', 'email',
                                             'email2', 'mdp')]
-        print('inputs:', inputs)
         if all(inputs):
             return jsonify(
                 {
