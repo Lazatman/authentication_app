@@ -48,7 +48,8 @@ def register():
                     "status": 200,
                     "result": 'Success!',
                     "email": request.form['email'],
-                    "mdp": request.form['mdp']
+                    "mdp": request.form['mdp'],
+                    "data": inputs
                 })
         else:
             return jsonify(
